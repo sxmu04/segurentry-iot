@@ -1,0 +1,313 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+/* VARIABLES */
+
+:root {
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #111827;
+  --input: #ffffff;
+  --border: #d1d5db;
+  --primary: #2563eb;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --input: #334155;
+  --border: #475569;
+  --primary: #3b82f6;
+}
+
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* CONTENEDOR */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  padding: 20px;
+}
+
+/* CARD */
+
+.card {
+  width: 100%;
+  max-width: 420px;
+
+  background: var(--card);
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, .15);
+
+  color: var(--text);
+
+  transition: .3s;
+}
+
+/* MODO OSCURO */
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.theme-btn {
+  width: auto;
+
+  background: transparent;
+  border: none;
+
+  color: var(--text);
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+/* LOGO */
+
+.logo {
+  text-align: center;
+
+  font-size: 55px;
+
+  color: var(--primary);
+
+  margin-bottom: 15px;
+}
+
+/* TITULOS */
+
+h2 {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+
+  color: #9ca3af;
+
+  margin-bottom: 25px;
+
+  font-size: 14px;
+}
+
+/* INPUTS */
+
+.input-group {
+  display: flex;
+  align-items: center;
+
+  height: 52px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 10px;
+
+  background: var(--input);
+
+  padding: 0 15px;
+
+  margin-bottom: 15px;
+
+  transition: .3s;
+}
+
+.input-group:focus-within {
+  border-color: var(--primary);
+}
+
+.icon {
+  color: #9ca3af;
+}
+
+.input-group input {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: var(--text);
+
+  padding-left: 12px;
+
+  font-size: 14px;
+}
+
+.input-group input::placeholder {
+  color: #9ca3af;
+}
+
+/* OJO PASSWORD */
+
+.eye-btn {
+  width: auto;
+
+  border: none;
+  background: transparent;
+
+  color: var(--text);
+
+  cursor: pointer;
+
+  padding: 0;
+
+  margin: 0;
+}
+
+.eye-btn i {
+  font-size: 16px;
+}
+
+/* BOTON LOGIN */
+
+.login-btn {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--primary);
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.login-btn:hover {
+  opacity: .9;
+}
+
+/* DIVISOR */
+
+.divider {
+  margin: 20px 0;
+  position: relative;
+  text-align: center;
+}
+
+.divider span {
+  background: var(--card);
+  padding: 0 10px;
+  color: #9ca3af;
+}
+
+.divider::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 1px;
+
+  background: var(--border);
+
+  z-index: -1;
+}
+
+/* GOOGLE */
+
+.google-btn {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  background: white;
+
+  color: #111827;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.google-btn:hover {
+  background: #f3f4f6;
+}
+
+.google-btn i {
+  font-size: 18px;
+}
+
+/* LINKS */
+
+.link {
+  text-align: center;
+
+  margin-top: 20px;
+
+  font-size: 14px;
+}
+
+.link a {
+  color: var(--primary);
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 480px) {
+
+  .card {
+    padding: 25px;
+  }
+
+  .logo {
+    font-size: 45px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+}
