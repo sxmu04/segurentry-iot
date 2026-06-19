@@ -84,7 +84,7 @@ export class ForgotPasswordComponent {
       Swal.fire({
         icon: 'success',
         title: 'Correo enviado',
-        text: 'Revisa tu bandeja para restablecer tu contraseña'
+        text: 'Revisa tu bandeja o spam para restablecer tu contraseña'
       });
 
       this.email = '';
