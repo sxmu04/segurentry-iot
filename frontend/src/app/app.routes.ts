@@ -16,12 +16,12 @@ export const routes: Routes = [
         .then(m => m.LoginComponent)
   },
 
- {
-  path: 'register',
-  loadComponent: () =>
-    import('./features/auth/pages/register/register.component')
-      .then(m => m.RegisterComponent)
-},
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./features/auth/pages/register/register.component')
+        .then(m => m.RegisterComponent)
+  },
 
   {
     path: 'home',
@@ -29,6 +29,13 @@ export const routes: Routes = [
       import('./features/home/home.component')
         .then(m => m.HomeComponent),
     canActivate: [authGuard]
+  },
+
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./features/auth/pages/forgot-password/forgot-password.component')
+        .then(m => m.ForgotPasswordComponent)
   },
 
   {

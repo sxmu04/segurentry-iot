@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup
 } from '@angular/fire/auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ export class AuthService {
 
   getUser() {
     return this.auth.currentUser;
+  }
+
+    resetPassword(email: string) {
+    return sendPasswordResetEmail(this.auth, email);
   }
 }

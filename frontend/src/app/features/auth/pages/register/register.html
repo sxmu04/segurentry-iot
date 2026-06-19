@@ -2,8 +2,9 @@
 
   <div class="card">
 
-    <!-- MODO OSCURO -->
+    <!-- BOTÓN MODO OSCURO -->
     <div class="toggle-container">
+
       <button
         class="theme-btn"
         (click)="toggleDarkMode()">
@@ -11,20 +12,28 @@
         <i class="fa-solid fa-moon"></i>
 
       </button>
+
     </div>
 
     <!-- LOGO -->
     <div class="logo">
+
       <i class="fa-solid fa-shield-halved"></i>
+
     </div>
 
-    <h2>Crear cuenta</h2>
+    <!-- TITULOS -->
+
+    <h2>SEGURENTRY</h2>
 
     <p class="subtitle">
-      Únete a SegurEntry
+
+      Crear una nueva cuenta
+
     </p>
 
     <!-- NOMBRE -->
+
     <div class="input-group">
 
       <i class="fa-solid fa-user"></i>
@@ -37,6 +46,7 @@
     </div>
 
     <!-- EMAIL -->
+
     <div class="input-group">
 
       <i class="fa-solid fa-envelope"></i>
@@ -49,6 +59,7 @@
     </div>
 
     <!-- PASSWORD -->
+
     <div class="input-group">
 
       <i class="fa-solid fa-lock"></i>
@@ -65,47 +76,69 @@
 
         <i
           [class]="showPassword
-            ? 'fa-solid fa-eye-slash'
-            : 'fa-solid fa-eye'">
+          ? 'fa-solid fa-eye-slash'
+          : 'fa-solid fa-eye'">
+
         </i>
 
       </button>
 
     </div>
 
-    <!-- REGISTRO -->
+    <!-- CONFIRMAR PASSWORD -->
+
+    <div class="input-group">
+
+      <i class="fa-solid fa-lock"></i>
+
+      <input
+        [type]="showConfirmPassword ? 'text' : 'password'"
+        placeholder="Confirmar contraseña"
+        [(ngModel)]="confirmPassword">
+
+      <button
+        type="button"
+        class="eye-btn"
+        (click)="showConfirmPassword = !showConfirmPassword">
+
+        <i
+          [class]="showConfirmPassword
+          ? 'fa-solid fa-eye-slash'
+          : 'fa-solid fa-eye'">
+    </i>
+      </button>
+    </div>
+
+    <!-- BOTÓN REGISTRO -->
+
     <button
       class="register-btn"
       (click)="register()">
-
-      Registrarse
-
+      Crear Cuenta
     </button>
 
     <!-- DIVISOR -->
+
     <div class="divider">
       <span>o</span>
     </div>
 
     <!-- GOOGLE -->
+
     <button
       class="google-btn"
       (click)="registerWithGoogle()">
-
       <i class="fa-brands fa-google"></i>
-
       Continuar con Google
-
     </button>
+
+    <!-- LINK LOGIN -->
 
     <p class="link">
       ¿Ya tienes cuenta?
-
       <a routerLink="/login">
         Inicia sesión
       </a>
     </p>
-
   </div>
-
 </div>

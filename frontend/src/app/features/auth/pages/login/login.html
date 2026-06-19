@@ -1,102 +1,62 @@
 <div class="container">
 
   <div class="card">
-
-    <!-- MODO OSCURO -->
     <div class="toggle-container">
-      <button
-        class="theme-btn"
-        (click)="toggleDarkMode()">
-
+      <button class="theme-btn" (click)="toggleDarkMode()">
         <i class="fa-solid fa-moon"></i>
-
       </button>
     </div>
 
-    <!-- LOGO -->
     <div class="logo">
       <i class="fa-solid fa-shield-halved"></i>
     </div>
 
-    <h2>SegurEntry</h2>
+    <h2>SEGURENTRY</h2>
 
     <p class="subtitle">
       Control Inteligente de Accesos
     </p>
 
-    <!-- EMAIL -->
     <div class="input-group">
-
       <i class="fa-solid fa-envelope"></i>
-
-      <input
-        type="email"
-        placeholder="Correo electrónico"
-        [(ngModel)]="email">
-
+      <input type="email" placeholder="Correo electrónico" [(ngModel)]="email">
     </div>
 
-    <!-- PASSWORD -->
     <div class="input-group">
-
       <i class="fa-solid fa-lock"></i>
-
-      <input
-        [type]="showPassword ? 'text' : 'password'"
-        placeholder="Contraseña"
-        [(ngModel)]="password">
-
-      <button
-        type="button"
-        class="eye-btn"
-        (click)="showPassword = !showPassword">
-
-        <i
-          [class]="showPassword
-            ? 'fa-solid fa-eye-slash'
-            : 'fa-solid fa-eye'">
+      <input [type]="showPassword ? 'text':'password'" placeholder="Contraseña" [(ngModel)]="password">
+      <button type="button" class="eye-btn" (click)="showPassword=!showPassword">
+        <i [class]="showPassword
+          ? 'fa-solid fa-eye-slash'
+          : 'fa-solid fa-eye'">
         </i>
-
       </button>
-
     </div>
 
-    <!-- LOGIN -->
-    <button
-      class="login-btn"
-      (click)="login()">
+    <div class="forgot">
+      <a routerLink="/forgot-password">
+        ¿Olvidaste tu contraseña?
+      </a>
+    </div>
 
+    <button class="login-btn" (click)="login()">
       Iniciar Sesión
-
     </button>
 
-    <!-- DIVISOR -->
     <div class="divider">
       <span>o</span>
     </div>
 
-    <!-- GOOGLE -->
-    <button
-      class="google-btn"
-      (click)="loginWithGoogle()">
-
+    <button class="google-btn" (click)="loginWithGoogle()">
       <i class="fa-brands fa-google"></i>
-
       Continuar con Google
-
     </button>
 
-    <!-- LINK -->
     <p class="link">
-
       ¿No tienes cuenta?
-
       <a routerLink="/register">
         Crear cuenta
       </a>
-
     </p>
-
   </div>
-
 </div>
