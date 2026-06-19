@@ -34,6 +34,11 @@
             <h3>{{ editMode ? 'Editar acceso' : 'Crear acceso' }}</h3>
 
             <input [(ngModel)]="form.name" placeholder="Nombre" />
+
+            <input [(ngModel)]="form.email" placeholder="Correo electrónico" />
+
+            <input [(ngModel)]="form.document" placeholder="Documento" />
+
             <input [(ngModel)]="form.role" placeholder="Rol" />
 
             <label>
