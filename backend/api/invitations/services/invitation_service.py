@@ -1,12 +1,14 @@
-from config.firebase.firebase_config import db
-from invitations.models import Invitation
-from invitations.utils.code_generator import generate_invitation_code
+from config.firebase_config import db
+from api.invitations.utils.code_generator import generate_invitation_code
+
 from datetime import datetime, timedelta
+
 
 class InvitationService:
 
     @staticmethod
     def create_invitation(email, role):
+
         code = generate_invitation_code()
 
         data = {
@@ -14,13 +16,16 @@ class InvitationService:
             "role": role,
             "code": code,
             "used": False,
-            "created_at": datetime.utcnow(),
+            "created_at": datetime.utcnow().isoformat(),
+            "expires_at": (
+                datetime.utcnow() + timedelta(minutes=30)
+            ).isoformat()
         }
 
         db.collection("invitations").document(code).set(data)
 
         return data
-    
+
     @staticmethod
     def validate_code(code):
 
@@ -31,7 +36,7 @@ class InvitationService:
 
         data = doc.to_dict()
 
-        if data["used"]:
+        if data.get("used"):
             return None
 
         return data

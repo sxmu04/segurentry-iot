@@ -1,0 +1,58 @@
+:host{
+
+    --bg:#111827;
+
+    --text:#94A3B8;
+
+    --border:rgba(255,255,255,.08);
+
+}
+
+.footer{
+
+    height:45px;
+
+    background:var(--bg);
+
+    border-top:1px solid var(--border);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 25px;
+
+    color:var(--text);
+
+    font-size:13px;
+
+}
+
+.left,
+.center,
+.right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+@media(max-width:900px){
+
+.footer{
+
+    justify-content:center;
+
+}
+
+.center,
+.right{
+
+    display:none;
+
+}
+
+}

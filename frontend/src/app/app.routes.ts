@@ -26,8 +26,8 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () =>
-      import('./features/home/home.component')
-        .then(m => m.HomeComponent),
+      import('./features/dashboard/super-admin/super-admin.component')
+        .then(m => m.SuperAdminComponent),
     canActivate: [authGuard]
   },
 
@@ -41,5 +41,34 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
+  },
+
+
+  // DASHBOARD
+
+  {
+    path: '',
+    canActivate: [authGuard],
+
+    loadComponent: () =>
+      import('./layout/dashboard-layout/dashboard-layout')
+        .then(m => m.DashboardLayoutComponent),
+
+    children: [
+
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./features/dashboard/super-admin/super-admin.component')
+            .then(m => m.SuperAdminComponent)
+      }
+
+    ]
+  },
+
+  {
+    path: '**',
+    redirectTo: 'login'
   }
+
 ];

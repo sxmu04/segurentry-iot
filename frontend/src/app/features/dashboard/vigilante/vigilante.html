@@ -1,0 +1,333 @@
+<div class="layout">
+
+    <!-- ===================== SIDEBAR ===================== -->
+
+    <aside class="sidebar" [class.collapsed]="!menuOpen">
+
+        <!-- PERFIL -->
+
+        <div class="profile-card">
+
+            <div class="avatar">
+
+                <i class="fas fa-user"></i>
+
+            </div>
+
+            <h3 *ngIf="menuOpen">
+                Vigilante
+            </h3>
+
+            <p *ngIf="menuOpen">
+                Gestión del Centro
+            </p>
+
+        </div>
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            <i class="fas fa-shield-alt"></i>
+
+            <span *ngIf="menuOpen">
+                SegurEntry
+            </span>
+
+        </div>
+
+        <!-- MENÚ -->
+
+        <nav>
+
+            <button class="active">
+
+                <i class="fas fa-home"></i>
+
+                <span *ngIf="menuOpen">
+                    Dashboard
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-users"></i>
+
+                <span *ngIf="menuOpen">
+                    Usuarios
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-door-open"></i>
+
+                <span *ngIf="menuOpen">
+                    Accesos
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-chart-line"></i>
+
+                <span *ngIf="menuOpen">
+                    Reportes
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-bell"></i>
+
+                <span *ngIf="menuOpen">
+                    Notificaciones
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-user-circle"></i>
+
+                <span *ngIf="menuOpen">
+                    Perfil
+                </span>
+
+            </button>
+
+            <button>
+
+                <i class="fas fa-cog"></i>
+
+                <span *ngIf="menuOpen">
+                    Configuración
+                </span>
+
+            </button>
+
+        </nav>
+
+        <!-- FOOTER SIDEBAR -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout"
+                (click)="logout()">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span *ngIf="menuOpen">
+                    Cerrar sesión
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <button
+                class="menu-btn"
+                (click)="toggleMenu()">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <div>
+
+                <h2>Panel del Vigilante</h2>
+
+                <p class="header-subtitle">
+
+                    Gestión de usuarios, accesos y reportes.
+
+                </p>
+
+            </div>
+
+        </header>
+
+        <!-- ===================== ESTADÍSTICAS ===================== -->
+
+        <section class="stats">
+
+            <div class="card stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fas fa-users"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>{{ accesses.length }}</h2>
+
+                    <p>Usuarios Registrados</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fas fa-door-open"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>84</h2>
+
+                    <p>Accesos Hoy</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fas fa-user-check"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>76</h2>
+
+                    <p>Usuarios Activos</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon red">
+
+                    <i class="fas fa-exclamation-triangle"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>8</h2>
+
+                    <p>Alertas</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ===================== TABLA ===================== -->
+
+        <section class="card list-card">
+
+            <div class="table-header">
+
+                <div>
+
+                    <h3>Usuarios del Centro</h3>
+
+                    <p>
+
+                        Administración de usuarios registrados.
+
+                    </p>
+
+                </div>
+
+                <div class="table-actions">
+
+                    <div class="search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Buscar usuario...">
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ===================== MODAL ===================== -->
+
+<div
+    class="modal-backdrop"
+    *ngIf="showForm">
+
+    <div class="modal">
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <button
+                class="close-btn"
+                (click)="showForm = false">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                class="cancel"
+                (click)="resetForm(); showForm = false">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="primary"
+                (click)="saveAccess(); showForm = false">
+
+                <i class="fas fa-save"></i>
+
+                {{ editMode ? 'Actualizar Usuario' : 'Registrar Usuario' }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

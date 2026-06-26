@@ -1,0 +1,299 @@
+/*==================================================
+SECCIONES
+==================================================*/
+
+.settings-section{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    transition:.25s;
+
+}
+
+.settings-section:hover{
+
+    background:var(--cardHover);
+
+}
+
+.settings-section h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    color:white;
+
+    margin-bottom:25px;
+
+    font-size:22px;
+
+}
+
+.settings-section h3 i{
+
+    color:var(--primary);
+
+}
+
+/*==================================================
+CAMPOS
+==================================================*/
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+
+}
+
+.field label{
+
+    color:var(--muted);
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.field select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    background:#0F172A;
+
+    color:white;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    transition:.25s;
+
+    font-size:15px;
+
+}
+
+.field select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+/*==================================================
+SWITCHES
+==================================================*/
+
+.switch-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.switch-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.switch-item span{
+
+    color:var(--text);
+
+    font-size:15px;
+
+}
+
+.switch-item input[type="checkbox"]{
+
+    width:22px;
+
+    height:22px;
+
+    accent-color:var(--primary);
+
+    cursor:pointer;
+
+}
+
+/*==================================================
+BOTONES
+==================================================*/
+
+.settings-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    margin-top:35px;
+
+    flex-wrap:wrap;
+
+}
+
+.primary-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.primary-btn:hover{
+
+    background:var(--primaryHover);
+
+    transform:translateY(-2px);
+
+}
+
+.secondary-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 24px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#334155;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.secondary-btn:hover{
+
+    background:#475569;
+
+    transform:translateY(-2px);
+
+}
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
+@media(max-width:768px){
+
+    .settings-card{
+
+        padding:20px;
+
+    }
+
+    .settings-section{
+
+        padding:20px;
+
+    }
+
+    .settings-actions{
+
+        flex-direction:column;
+
+    }
+
+    .primary-btn,
+
+    .secondary-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .switch-item{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:12px;
+
+    }
+
+    .field select{
+
+        font-size:14px;
+
+    }
+
+    .settings-section h3{
+
+        font-size:20px;
+
+    }
+
+}

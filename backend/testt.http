@@ -1,0 +1,67 @@
+### Crear invitación
+
+POST http://127.0.0.1:8000/api/invitations/create/
+Content-Type: application/json
+
+{
+    "email": "ejuan5427@gmail.com",
+    "role": "Administrador"
+}
+
+### Validar invitación
+POST http://127.0.0.1:8000/api/invitations/validate/
+Content-Type: application/json
+
+{
+    "code": "NX3V95OX",
+    "password": "Admin123456"
+}
+
+### Login JWT
+
+POST http://127.0.0.1:8000/api/auth/login/
+Content-Type: application/json
+
+{
+    "email":"ejuan5427@gmail.com"
+}
+
+### Google Login
+
+POST http://127.0.0.1:8000/api/auth/google-login/
+Content-Type: application/json
+
+{
+    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjJmMjk1MGEyNGFlYWRkMjYzYzIxM2I2MDNhZjMxNWEzMjdiNmM3MjAiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiSnVhbiBTYWNhbmFtYnV5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FDZzhvY0tRZ3cyeXJvV3B5d2lQWVZHRUEyTUZwR0pYUjh1d1pySWtPUEJ6eUhDZTNuUVB0TXR2PXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3NlZ3VyZW50cnktYjE2YTMiLCJhdWQiOiJzZWd1cmVudHJ5LWIxNmEzIiwiYXV0aF90aW1lIjoxNzgyNDM5NTQ4LCJ1c2VyX2lkIjoiaVdPVm1ndkRTSGhUb3dsdGRNc204a05Bcnl5MiIsInN1YiI6ImlXT1ZtZ3ZEU0hoVG93bHRkTXNtOGtOQXJ5eTIiLCJpYXQiOjE3ODI0Mzk1NDgsImV4cCI6MTc4MjQ0MzE0OCwiZW1haWwiOiJlanVhbjU0MjdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDM2MDU1NDY4ODY3NTU3NDMwOTgiXSwiZW1haWwiOlsiZWp1YW41NDI3QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6Imdvb2dsZS5jb20ifX0.eUeSaLreJ0cCkRGEqjkrB-FCJHYUqkO4AP6-lmUBkykihBQ6UYxo8g-gzJQhOZZXl1pmvsmJmYIOoUhxex2r96bQhVzjVjntdICKe5IG_1OiJ5ilhKKE9OBIQv-iCjE1V6FY4aeohHawMkfvjulKDA1xLJfk3iNZBZ1DDuvpNDmmqLWxp78tukGLPP2AyTPUTHmmsgtRHFpq7PkC-HYZpzt_PrinHkhA56ecZPwnliQ_qHl3btvNt2cX3-kzdMH5MMUzQFXCQIuRzdSFNu_6cb6as9xkvpssgsm75M9vYifW9y5g2dJ0ZZ8CkUfzZhyjtv_D8pduxN5rHgWDPmOGhQ"
+}
+
+
+### LISTAR USUARIOS
+
+GET http://127.0.0.1:8000/api/users/list/
+Accept: application/json
+
+### ACTUALIZAR USUARIO
+
+PUT http://127.0.0.1:8000/api/users/update/DPRrUYcDiWRz9S5ZKsA1e6BQjQ63/
+Content-Type: application/json
+
+{
+    "email": "nuevoemail@gmail.com",
+    "role": "Administrador",
+    "active": true,
+    "name": "Juan Actualizado"
+}
+
+### CAMBIAR CONTRASEÑA
+
+PUT http://127.0.0.1:8000/api/users/update/DPRrUYcDiWRz9S5ZKsA1e6BQjQ63/
+Content-Type: application/json
+
+{
+    "password": "NuevaPassword123"
+}
+
+### ELIMINAR USUARIO
+
+DELETE http://127.0.0.1:8000/api/users/delete/DPRrUYcDiWRz9S5ZKsA1e6BQjQ63/

@@ -1,0 +1,219 @@
+/*==================================================
+LISTA DE NOTIFICACIONES
+==================================================*/
+
+.notifications-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+/*==================================================
+CARD NOTIFICACIÓN
+==================================================*/
+
+.notification-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:22px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    transition:.25s;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.20);
+
+}
+
+.notification-card:hover{
+
+    background:var(--cardHover);
+
+    transform:translateY(-3px);
+
+}
+
+.notification-card.unread{
+
+    border-left:5px solid var(--primary);
+
+}
+
+/*==================================================
+ICONOS
+==================================================*/
+
+.notification-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    flex-shrink:0;
+
+}
+
+.notification-icon.success{
+
+    background:rgba(16,185,129,.15);
+
+    color:#10B981;
+
+}
+
+.notification-icon.warning{
+
+    background:rgba(245,158,11,.15);
+
+    color:#F59E0B;
+
+}
+
+.notification-icon.info{
+
+    background:rgba(59,130,246,.15);
+
+    color:#3B82F6;
+
+}
+
+.notification-icon.primary{
+
+    background:rgba(37,99,235,.15);
+
+    color:var(--primary);
+
+}
+
+/*==================================================
+CONTENIDO
+==================================================*/
+
+.notification-content{
+
+    flex:1;
+
+}
+
+.notification-content h3{
+
+    color:white;
+
+    font-size:19px;
+
+    margin-bottom:8px;
+
+}
+
+.notification-content p{
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+    margin-bottom:10px;
+
+}
+
+.notification-content span{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+/*==================================================
+BOTÓN ELIMINAR
+==================================================*/
+
+.delete-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:rgba(239,68,68,.15);
+
+    color:#EF4444;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+}
+
+.delete-btn:hover{
+
+    background:#EF4444;
+
+    color:white;
+
+    transform:scale(1.05);
+
+}
+
+/*==================================================
+ANIMACIÓN
+==================================================*/
+
+.notification-card{
+
+    animation:fadeIn .35s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(12px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

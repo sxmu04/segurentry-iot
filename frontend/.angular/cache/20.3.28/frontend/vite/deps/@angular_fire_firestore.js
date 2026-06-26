@@ -1,8 +1,7 @@
 import {
   AppCheckInstances,
   AuthInstances
-} from "./chunk-IJYSXUX5.js";
-import "./chunk-5KH5AG5B.js";
+} from "./chunk-N7IN6XMO.js";
 import {
   FirebaseApp,
   FirebaseApps,
@@ -12,6 +11,7 @@ import {
   ɵgetDefaultInstanceOf,
   ɵzoneWrap
 } from "./chunk-UZT4QMNM.js";
+import "./chunk-5KH5AG5B.js";
 import {
   Component,
   FirebaseError,
@@ -37,7 +37,8 @@ import {
   registerVersion,
   updateEmulatorBanner
 } from "./chunk-OLAM3ASI.js";
-import "./chunk-74TUAO2F.js";
+import "./chunk-TDP4MEBB.js";
+import "./chunk-IYEWMFKI.js";
 import {
   InjectionToken,
   Injector,

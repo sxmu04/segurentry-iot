@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { ApiService } from '../../../../core/services/api.service';
 
 @Component({
   standalone: true,
@@ -28,8 +29,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     const theme = localStorage.getItem('theme');
@@ -54,7 +56,7 @@ export class RegisterComponent implements OnInit {
     return regex.test(email);
   }
 
-  register() {
+  async register() {
 
     if (!this.name.trim()) {
       Swal.fire('Error', 'Ingrese su nombre', 'warning');
@@ -81,39 +83,64 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if (!this.confirmPassword) {
-      Swal.fire('Error', 'Confirme la contraseña', 'warning');
-      return;
-    }
-
     if (this.password !== this.confirmPassword) {
       Swal.fire('Error', 'Las contraseñas no coinciden', 'error');
       return;
     }
 
-    // REGISTRO
-    this.auth.register(this.email, this.password)
-      .then(() => {
+    try {
+
+      const response: any = await this.apiService.checkProvider(this.email).toPromise();
+
+      if (response.exists && response.provider === "google") {
 
         Swal.fire({
-          title: 'Registro exitoso',
-          text: 'Ahora puedes iniciar sesión',
-          icon: 'success',
-          confirmButtonColor: '#1e88e5'
+          icon: "warning",
+          title: "Correo registrado",
+          text: "Este correo ya fue registrado con Google."
         });
 
-        this.router.navigate(['/login'], { replaceUrl: true });
+        return;
+      }
 
-      })
-      .catch(err => {
+      await this.auth.register(this.email, this.password);
 
-        Swal.fire({
-          title: 'Error',
-          text: err.message,
-          icon: 'error'
-        });
-
+      Swal.fire({
+        title: 'Registro exitoso',
+        text: 'Ahora puedes iniciar sesión',
+        icon: 'success',
+        confirmButtonColor: '#1e88e5'
       });
+
+      this.router.navigate(['/login'], { replaceUrl: true });
+
+    } catch (err: any) {
+
+      let mensaje = "No fue posible crear la cuenta.";
+
+      switch (err.code) {
+
+        case "auth/email-already-in-use":
+          mensaje = "Ya existe una cuenta con ese correo.";
+          break;
+
+        case "auth/weak-password":
+          mensaje = "La contraseña es demasiado débil.";
+          break;
+
+        case "auth/invalid-email":
+          mensaje = "Correo electrónico inválido.";
+          break;
+
+      }
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: mensaje
+      });
+
+    }
   }
 
   registerWithGoogle() {
