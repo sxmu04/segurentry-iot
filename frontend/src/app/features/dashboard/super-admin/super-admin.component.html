@@ -1,0 +1,516 @@
+<div class="layout">
+
+    <!-- ===================== SIDEBAR ===================== -->
+
+    <aside class="sidebar" [class.collapsed]="!menuOpen">
+
+        <div>
+
+            <div class="profile-card">
+
+                <div class="avatar">
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+                <h3 *ngIf="menuOpen">
+                    Super Administrador
+                </h3>
+
+                <p *ngIf="menuOpen">
+                    Administrador General
+                </p>
+
+            </div>
+
+            <div class="logo">
+
+                <i class="fas fa-shield-alt"></i>
+
+                <span *ngIf="menuOpen">
+                    SegurEntry
+                </span>
+
+            </div>
+
+            <nav>
+
+                <button class="active">
+
+                    <i class="fas fa-home"></i>
+
+                    <span *ngIf="menuOpen">
+                        Dashboard
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-users"></i>
+
+                    <span *ngIf="menuOpen">
+                        Usuarios
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-user-shield"></i>
+
+                    <span *ngIf="menuOpen">
+                        Administradores
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-key"></i>
+
+                    <span *ngIf="menuOpen">
+                        Accesos
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-user-tag"></i>
+
+                    <span *ngIf="menuOpen">
+                        Roles
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-paper-plane"></i>
+
+                    <span *ngIf="menuOpen">
+                        Invitaciones
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-chart-line"></i>
+
+                    <span *ngIf="menuOpen">
+                        Reportes
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-bell"></i>
+
+                    <span *ngIf="menuOpen">
+                        Notificaciones
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-user-circle"></i>
+
+                    <span *ngIf="menuOpen">
+                        Perfil
+                    </span>
+
+                </button>
+
+                <button>
+
+                    <i class="fas fa-cog"></i>
+
+                    <span *ngIf="menuOpen">
+                        Configuración
+                    </span>
+
+                </button>
+
+            </nav>
+
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="logout"
+                (click)="logout()">
+
+                <i class="fas fa-sign-out-alt"></i>
+
+                <span *ngIf="menuOpen">
+                    Cerrar sesión
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+
+    <main class="main">
+
+        <header>
+
+            <button
+                class="menu-btn"
+                (click)="toggleMenu()">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <div>
+
+                <h2>Panel de Control</h2>
+
+                <p class="header-subtitle">
+
+                    Administración general del sistema SegurEntry.
+
+                </p>
+
+            </div>
+
+        </header>
+
+                <!-- ===================== ESTADÍSTICAS ===================== -->
+
+        <section class="stats">
+
+            <div class="card stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fas fa-users"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>{{ accesses.length }}</h2>
+
+                    <p>Usuarios Totales</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>3</h2>
+
+                    <p>Administradores</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fas fa-door-open"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>84</h2>
+
+                    <p>Accesos Hoy</p>
+
+                </div>
+
+            </div>
+
+            <div class="card stat-card">
+
+                <div class="stat-icon red">
+
+                    <i class="fas fa-exclamation-triangle"></i>
+
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>8</h2>
+
+                    <p>Alertas</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ===================== TABLA ===================== -->
+
+        <section class="card list-card">
+
+            <div class="table-header">
+
+                <div>
+
+                    <h3>
+
+                        Usuarios Registrados
+
+                    </h3>
+
+                    <p>
+
+                        Administre todos los usuarios registrados del sistema.
+
+                    </p>
+
+                </div>
+
+                <div class="table-actions">
+
+                    <div class="search-box">
+
+                        <i class="fas fa-search"></i>
+
+                        <input
+                            type="text"
+                            placeholder="Buscar usuario...">
+
+                    </div>
+
+                    <button
+                        class="primary-btn"
+                        (click)="showForm = true">
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Registrar Usuario
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Nombre</th>
+
+                            <th>Correo</th>
+
+                            <th>Documento</th>
+
+                            <th>Rol</th>
+
+                            <th>Temporal</th>
+
+                            <th>Expira</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let a of accesses">
+
+                            <td>{{ a.name }}</td>
+
+                            <td>{{ a.email }}</td>
+
+                            <td>{{ a.document }}</td>
+
+                            <td>{{ a.role }}</td>
+
+                            <td>
+
+                                <span [class.temp]="a.tempAccess">
+
+                                    {{ a.tempAccess ? 'Sí' : 'No' }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                {{ a.expirationDate || '-' }}
+
+                            </td>
+
+                            <td class="actions">
+
+                                <button
+                                    class="edit"
+                                    (click)="editAccess(a); showForm = true">
+
+                                    <i class="fas fa-edit"></i>
+
+                                </button>
+
+                                <button
+                                    class="delete"
+                                    (click)="deleteAccess(a.id)">
+
+                                    <i class="fas fa-trash"></i>
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ===================== MODAL ===================== -->
+
+<div
+    class="modal-backdrop"
+    *ngIf="showForm">
+
+    <div class="modal">
+
+        <!-- HEADER -->
+
+        <div class="modal-header">
+
+            <h2>
+
+                {{ editMode ? 'Editar Usuario' : 'Registrar Usuario' }}
+
+            </h2>
+
+            <button
+                class="close-btn"
+                (click)="showForm = false">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
+        </div>
+
+        <!-- BODY -->
+
+        <div class="modal-body">
+
+            <input
+                [(ngModel)]="form.name"
+                placeholder="Nombre completo">
+
+            <input
+                [(ngModel)]="form.email"
+                type="email"
+                placeholder="Correo electrónico">
+
+            <input
+                [(ngModel)]="form.document"
+                placeholder="Documento de identidad">
+
+            <select
+                [(ngModel)]="form.role">
+
+                <option value="">
+                    Seleccione un rol
+                </option>
+
+                <option value="Administrador">
+                    Administrador
+                </option>
+
+                <option value="Instructor">
+                    Instructor
+                </option>
+
+                <option value="Vigilante">
+                    Vigilante
+                </option>
+
+                <option value="Aprendiz">
+                    Aprendiz
+                </option>
+
+            </select>
+
+            <label class="checkbox">
+
+                <input
+                    type="checkbox"
+                    [(ngModel)]="form.tempAccess">
+
+                Acceso temporal
+
+            </label>
+
+            <input
+                *ngIf="form.tempAccess"
+                type="date"
+                [(ngModel)]="form.expirationDate">
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <div class="modal-footer">
+
+            <button
+                class="cancel"
+                (click)="resetForm(); showForm = false">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="primary"
+                (click)="saveAccess(); showForm = false">
+
+                <i class="fas fa-save"></i>
+
+                {{ editMode ? 'Actualizar Usuario' : 'Registrar Usuario' }}
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

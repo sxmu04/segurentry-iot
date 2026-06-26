@@ -1,7 +1,11 @@
 import random
 import string
 
-import random
 
-def generate_code():
-    return str(random.randint(100000, 999999))
+def generate_invitation_code(length=8):
+    return ''.join(
+        random.choices(
+            string.ascii_uppercase + string.digits,
+            k=length
+        )
+    )

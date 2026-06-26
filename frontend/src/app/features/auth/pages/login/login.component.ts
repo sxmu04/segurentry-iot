@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { ApiService } from '../../../../core/services/api.service';
 
 import Swal from 'sweetalert2';
 
@@ -28,8 +29,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
     const theme = localStorage.getItem("theme");
@@ -106,7 +108,7 @@ export class LoginComponent implements OnInit {
         showConfirmButton: false
       });
 
-      this.router.navigate(['/home'], { replaceUrl: true });
+      this.router.navigate(['/dashboard/super-admin'], { replaceUrl: true });
 
     } catch (err: any) {
 
@@ -119,10 +121,9 @@ export class LoginComponent implements OnInit {
 
   async loginWithGoogle() {
 
-    this.loading = true;
-
     Swal.fire({
       title: 'Conectando con Google...',
+      text: 'Por favor espera',
       allowOutsideClick: false,
       didOpen: () => {
         Swal.showLoading();
@@ -131,25 +132,115 @@ export class LoginComponent implements OnInit {
 
     try {
 
-      await this.auth.loginWithGoogle();
+      const result = await this.auth.loginWithGoogle();
+
+      const email = result.user.email!;
+
+      this.apiService.checkProvider(email)
+        .subscribe(async (response: any) => {
+
+          if (
+            response.exists &&
+            response.provider === "password"
+          ) {
+
+            await this.auth.logout();
+
+            Swal.fire({
+              icon: "warning",
+              title: "Correo registrado",
+              text: "Este correo ya fue registrado con correo y contraseña."
+            });
+
+            return;
+          }
+
+          // continuar enviando el token a Django
+
+        });
+
+      // Verificar cómo está registrado ese correo
+      const methods = await this.auth.getSignInMethods(email);
+
+      console.log(methods);
+
+      console.log("Métodos de autenticación:", methods);
+
+      // Si el correo SOLO tiene password, bloquear Google
+      if (
+        methods.includes("password") &&
+        !methods.includes("google.com")
+      ) {
+
+        await this.auth.logout();
+
+        Swal.fire({
+          icon: 'warning',
+          title: 'Correo registrado',
+          text: 'Este correo ya fue registrado con correo y contraseña. Inicia sesión con tu contraseña.'
+        });
+
+        return;
+      }
+
+      // Obtener el ID Token
+      const idToken = await result.user.getIdToken();
+
+      console.log("TOKEN:", idToken);
+      console.log("LONGITUD:", idToken.length);
+      console.log("SEGMENTOS:", idToken.split(".").length);
+
+      this.apiService.googleLogin(idToken)
+        .subscribe({
+
+          next: (response: any) => {
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Bienvenido',
+              text: 'Inicio de sesión exitoso',
+              timer: 1500,
+              showConfirmButton: false
+            });
+
+            console.log("DJANGO:", response);
+
+            this.router.navigate(
+              ['/dashboard/super-admin'],
+              { replaceUrl: true }
+            );
+
+          },
+
+          error: async (error) => {
+
+            console.error("ERROR COMPLETO:", error);
+            console.log("RESPUESTA DJANGO:", error.error);
+
+            await this.auth.logout();
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Error Google Login',
+              text: error?.error?.message || 'Error al autenticar con Google'
+            });
+
+          }
+
+        });
+
+    } catch (error: any) {
+
+      console.error(error);
 
       Swal.fire({
-        icon: 'success',
-        title: 'Bienvenido',
-        text: 'Inicio de sesión con Google exitoso',
-        timer: 1500,
-        showConfirmButton: false
+        icon: 'error',
+        title: 'Error',
+        text: error?.message || 'No fue posible iniciar sesión con Google'
       });
 
-      this.router.navigate(['/home'], { replaceUrl: true });
-
-    } catch (err: any) {
-
-      this.handleError(err);
-
-    } finally {
-      this.loading = false;
     }
+
   }
 
   handleError(error: any) {

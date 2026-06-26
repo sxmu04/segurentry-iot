@@ -1,94 +1,106 @@
 {
-  "hash": "edd2fbc0",
-  "configHash": "f893bc9b",
-  "lockfileHash": "2d5430b1",
-  "browserHash": "f4c90ef6",
+  "hash": "b903e2fa",
+  "configHash": "db87a34a",
+  "lockfileHash": "f24ca062",
+  "browserHash": "806f5655",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "a66b8438",
+      "fileHash": "98ad679e",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "c06bd574",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "07a68899",
+      "fileHash": "29c2cd67",
       "needsInterop": false
     },
     "@angular/fire/app": {
       "src": "../../../../../../node_modules/@angular/fire/fesm2022/angular-fire-app.mjs",
       "file": "@angular_fire_app.js",
-      "fileHash": "a3be04f8",
+      "fileHash": "5eae43e4",
       "needsInterop": false
     },
     "@angular/fire/auth": {
       "src": "../../../../../../node_modules/@angular/fire/fesm2022/angular-fire-auth.mjs",
       "file": "@angular_fire_auth.js",
-      "fileHash": "be5c5deb",
+      "fileHash": "2a17c516",
       "needsInterop": false
     },
     "@angular/fire/firestore": {
       "src": "../../../../../../node_modules/@angular/fire/fesm2022/angular-fire-firestore.mjs",
       "file": "@angular_fire_firestore.js",
-      "fileHash": "686cade4",
+      "fileHash": "651d94bd",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "c5a906cf",
+      "fileHash": "35956c7f",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "39e302a2",
+      "fileHash": "3574ae53",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "7e2fd900",
+      "fileHash": "1cb3e2a4",
       "needsInterop": false
     },
     "firebase/auth": {
       "src": "../../../../../../node_modules/firebase/auth/dist/esm/index.esm.js",
       "file": "firebase_auth.js",
-      "fileHash": "34ca571c",
+      "fileHash": "02a251cf",
       "needsInterop": false
     },
     "sweetalert2": {
       "src": "../../../../../../node_modules/sweetalert2/dist/sweetalert2.esm.all.js",
       "file": "sweetalert2.js",
-      "fileHash": "e8d359a8",
+      "fileHash": "ea18d815",
       "needsInterop": false
     },
     "zone.js": {
       "src": "../../../../../../node_modules/zone.js/fesm2015/zone.js",
       "file": "zone__js.js",
-      "fileHash": "1aa99d3b",
+      "fileHash": "f32f3c83",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-IJYSXUX5": {
-      "file": "chunk-IJYSXUX5.js"
-    },
-    "chunk-5KH5AG5B": {
-      "file": "chunk-5KH5AG5B.js"
+    "chunk-N7IN6XMO": {
+      "file": "chunk-N7IN6XMO.js"
     },
     "chunk-UZT4QMNM": {
       "file": "chunk-UZT4QMNM.js"
     },
+    "chunk-5KH5AG5B": {
+      "file": "chunk-5KH5AG5B.js"
+    },
     "chunk-OLAM3ASI": {
       "file": "chunk-OLAM3ASI.js"
     },
-    "chunk-TI6CKMKQ": {
-      "file": "chunk-TI6CKMKQ.js"
+    "chunk-H7LYTQX5": {
+      "file": "chunk-H7LYTQX5.js"
     },
-    "chunk-74TUAO2F": {
-      "file": "chunk-74TUAO2F.js"
+    "chunk-4OKVA2YF": {
+      "file": "chunk-4OKVA2YF.js"
+    },
+    "chunk-TDP4MEBB": {
+      "file": "chunk-TDP4MEBB.js"
+    },
+    "chunk-IYEWMFKI": {
+      "file": "chunk-IYEWMFKI.js"
     },
     "chunk-YYYH6LOL": {
       "file": "chunk-YYYH6LOL.js"

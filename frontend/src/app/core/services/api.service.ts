@@ -8,7 +8,7 @@ export class ApiService {
 
   private API_URL = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAccessLogs() {
     return this.http.get(`${this.API_URL}/access`);
@@ -16,5 +16,26 @@ export class ApiService {
 
   registerAccess(data: any) {
     return this.http.post(`${this.API_URL}/access/register/`, data);
+  }
+
+  googleLogin(idToken: string) {
+
+    return this.http.post(
+      'http://127.0.0.1:8000/api/auth/google-login/',
+      {
+        id_token: idToken
+      }
+    );
+  }
+
+  checkProvider(email: string) {
+
+    return this.http.post(
+      "http://127.0.0.1:8000/api/auth/check-provider/",
+      {
+        email
+      }
+    );
+
   }
 }

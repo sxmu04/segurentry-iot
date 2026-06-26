@@ -1,0 +1,233 @@
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+:host{
+
+    --sidebar:#111827;
+
+    --sidebar2:#0F172A;
+
+    --primary:#2563EB;
+
+    --primaryHover:#1D4ED8;
+
+    --text:#E5E7EB;
+
+    --muted:#94A3B8;
+
+    --border:rgba(255,255,255,.08);
+
+}
+
+/*=========================
+Sidebar
+=========================*/
+
+.sidebar{
+
+    width:280px;
+
+    height:100vh;
+
+    background:linear-gradient(180deg,var(--sidebar),var(--sidebar2));
+
+    display:flex;
+
+    flex-direction:column;
+
+    border-right:1px solid var(--border);
+
+}
+
+/*=========================
+Logo
+=========================*/
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:25px;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.logo i{
+
+    color:var(--primary);
+
+    font-size:28px;
+
+}
+
+/*=========================
+Perfil
+=========================*/
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    border-top:1px solid var(--border);
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.avatar{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:3px solid var(--primary);
+
+}
+
+.avatar img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+}
+
+.profile-info h4{
+
+    color:white;
+
+    margin:0;
+
+}
+
+.profile-info span{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+/*=========================
+Menú
+=========================*/
+
+nav{
+
+    flex:1;
+
+    padding:20px 15px;
+
+}
+
+nav button{
+
+    width:100%;
+
+    border:none;
+
+    background:none;
+
+    color:var(--muted);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    margin-bottom:8px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-size:15px;
+
+}
+
+nav button:hover{
+
+    background:rgba(37,99,235,.15);
+
+    color:white;
+
+}
+
+nav button.active{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+nav button i{
+
+    width:20px;
+
+    text-align:center;
+
+}
+
+/*=========================
+Footer
+=========================*/
+
+.bottom{
+
+    padding:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+.logout{
+
+    width:100%;
+
+    border:none;
+
+    background:#dc2626;
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.logout:hover{
+
+    background:#B91C1C;
+
+}
