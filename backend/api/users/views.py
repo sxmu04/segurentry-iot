@@ -1,8 +1,12 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+from rest_framework import generics
+from .models import User
+from .serializers import UserSerializer
 
 from .services.user_service import UserService
+
 
 
 @csrf_exempt
@@ -116,3 +120,7 @@ def delete_user(request, uid):
             "success": False,
             "message": str(e)
         }, status=400)
+    
+class UserListCreateView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

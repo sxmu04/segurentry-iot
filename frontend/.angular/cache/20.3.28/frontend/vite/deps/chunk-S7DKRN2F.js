@@ -30466,8 +30466,6 @@ var REQUEST_CONTEXT = new InjectionToken(typeof ngDevMode === "undefined" || ngD
 });
 
 export {
-  setCurrentInjector,
-  SIGNAL,
   Subscription,
   pipe,
   Observable,
@@ -30510,6 +30508,8 @@ export {
   switchMap,
   takeUntil,
   tap,
+  setCurrentInjector,
+  SIGNAL,
   setAlternateWeakRefImpl,
   Version,
   VERSION,
@@ -31005,4 +31005,4 @@ export {
   RESPONSE_INIT,
   REQUEST_CONTEXT
 };
-//# sourceMappingURL=chunk-YYYH6LOL.js.map
+//# sourceMappingURL=chunk-S7DKRN2F.js.map

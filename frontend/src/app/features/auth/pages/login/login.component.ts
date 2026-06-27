@@ -86,7 +86,6 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    // 🔄 LOADING BONITO
     Swal.fire({
       title: 'Verificando...',
       text: 'Accediendo al sistema',
@@ -98,19 +97,39 @@ export class LoginComponent implements OnInit {
 
     try {
 
-      await this.auth.login(this.email, this.password);
+      const userCredential = await this.auth.login(this.email, this.password);
+
+      console.log("LOGIN OK 🔥", userCredential);
+
+      // ⚠️ MUY IMPORTANTE: esperar a Firebase
+      const user = userCredential.user;
+
+      if (!user) throw new Error("No user");
+
+      // 🔑 Forzar obtención de token (esto asegura sesión lista)
+      await user.getIdToken();
+
+      Swal.close();
 
       Swal.fire({
         icon: 'success',
         title: 'Bienvenido',
-        text: 'Acceso concedido',
         timer: 1500,
         showConfirmButton: false
+      }).then(() => {
+
+        console.log("NAVEGANDO 🚀");
+
+        this.router.navigate(
+          ['/dashboard/super-admin'],
+          { replaceUrl: true }
+        );
+
       });
 
-      this.router.navigate(['/dashboard/super-admin'], { replaceUrl: true });
-
     } catch (err: any) {
+
+      Swal.close();
 
       this.handleError(err);
 
@@ -214,8 +233,9 @@ export class LoginComponent implements OnInit {
 
           error: async (error) => {
 
-            console.error("ERROR COMPLETO:", error);
-            console.log("RESPUESTA DJANGO:", error.error);
+            console.error("STATUS:", error.status);
+            console.error("BODY:", error.error);
+            console.error("HEADERS:", error.headers);
 
             await this.auth.logout();
 

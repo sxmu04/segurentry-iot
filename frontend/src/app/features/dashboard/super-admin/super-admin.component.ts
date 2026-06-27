@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { FirestoreService } from '../../../core/services/firestore.service';
+import { DashboardService } from '../../../core/services/dashboard.service';
+
 
 interface Access {
   id: string;
@@ -37,13 +39,13 @@ export class SuperAdminComponent {
 
   menuOpen = true;
 
-  // <-- ESTA ES LA VARIABLE QUE TE FALTA
+
   showForm = false;
 
   editMode = false;
 
   accesses: Access[] = [
-    {
+    /*{
       id: '1',
       name: 'Admin Principal',
       role: 'Admin',
@@ -55,7 +57,7 @@ export class SuperAdminComponent {
       role: 'User',
       tempAccess: true,
       expirationDate: '2026-06-30'
-    }
+    }*/
   ];
 
   form: Access = {
@@ -70,7 +72,8 @@ export class SuperAdminComponent {
 
   constructor(
     private router: Router,
-    private firestoreService: FirestoreService
+    private firestoreService: FirestoreService,
+    private dashboardService: DashboardService
   ) { }
 
   // =========================
@@ -79,8 +82,14 @@ export class SuperAdminComponent {
 
   ngOnInit() {
 
-    this.firestoreService.getUsers().subscribe(data => {
-      this.accesses = data;
+    this.dashboardService.getUsers().subscribe({
+      next: (data) => {
+        console.log('USUARIOS BACKEND:', data);
+        this.accesses = data;
+      },
+      error: (err) => {
+        console.error('ERROR BACKEND:', err);
+      }
     });
 
   }
@@ -167,115 +176,117 @@ export class SuperAdminComponent {
 
     } else {
 
-      this.firestoreService.createUser(data).then(() => {
+      this.dashboardService.createUser(data).subscribe({
+        next: () => {
 
-        Swal.fire({
+          Swal.fire({
+            icon: 'success',
+            title: 'Usuario registrado',
+            timer: 1500,
+            showConfirmButton: false
+          });
 
-          icon: 'success',
-          title: 'Usuario registrado',
-          timer: 1500,
-          showConfirmButton: false
+          this.showForm = false;
+          this.resetForm();
 
-        });
+        },
+        error: (err) => {
+          console.error(err);
+          Swal.fire('Error', 'No se pudo crear el usuario', 'error');
+        }
+      });
 
-        this.showForm = false;
+    }
+  }
 
-        this.resetForm();
+    // =========================
+    // EDITAR
+    // =========================
+
+    editAccess(access: Access) {
+
+      this.form = { ...access };
+
+      this.editMode = true;
+
+      this.showForm = true;
+
+    }
+
+    // =========================
+    // ELIMINAR
+    // =========================
+
+    deleteAccess(id: string) {
+
+      Swal.fire({
+
+        title: 'Eliminar usuario',
+
+        text: '¿Desea eliminar este usuario?',
+
+        icon: 'warning',
+
+        showCancelButton: true,
+
+        confirmButtonText: 'Eliminar',
+
+        cancelButtonText: 'Cancelar'
+
+      }).then(result => {
+
+        if (result.isConfirmed) {
+
+          this.firestoreService.deleteUser(id);
+
+          Swal.fire({
+
+            icon: 'success',
+
+            title: 'Usuario eliminado',
+
+            timer: 1500,
+
+            showConfirmButton: false
+
+          });
+
+        }
+
+      });
+
+    }
+
+    // =========================
+    // LOGOUT
+    // =========================
+
+    logout() {
+
+      Swal.fire({
+
+        title: 'Cerrar sesión',
+
+        text: '¿Seguro que deseas salir?',
+
+        icon: 'question',
+
+        showCancelButton: true,
+
+        confirmButtonText: 'Salir',
+
+        cancelButtonText: 'Cancelar'
+
+      }).then(result => {
+
+        if (result.isConfirmed) {
+
+          this.router.navigate(['/login']);
+
+        }
 
       });
 
     }
 
   }
-
-  // =========================
-  // EDITAR
-  // =========================
-
-  editAccess(access: Access) {
-
-    this.form = { ...access };
-
-    this.editMode = true;
-
-    this.showForm = true;
-
-  }
-
-  // =========================
-  // ELIMINAR
-  // =========================
-
-  deleteAccess(id: string) {
-
-    Swal.fire({
-
-      title: 'Eliminar usuario',
-
-      text: '¿Desea eliminar este usuario?',
-
-      icon: 'warning',
-
-      showCancelButton: true,
-
-      confirmButtonText: 'Eliminar',
-
-      cancelButtonText: 'Cancelar'
-
-    }).then(result => {
-
-      if (result.isConfirmed) {
-
-        this.firestoreService.deleteUser(id);
-
-        Swal.fire({
-
-          icon: 'success',
-
-          title: 'Usuario eliminado',
-
-          timer: 1500,
-
-          showConfirmButton: false
-
-        });
-
-      }
-
-    });
-
-  }
-
-  // =========================
-  // LOGOUT
-  // =========================
-
-  logout() {
-
-    Swal.fire({
-
-      title: 'Cerrar sesión',
-
-      text: '¿Seguro que deseas salir?',
-
-      icon: 'question',
-
-      showCancelButton: true,
-
-      confirmButtonText: 'Salir',
-
-      cancelButtonText: 'Cancelar'
-
-    }).then(result => {
-
-      if (result.isConfirmed) {
-
-        this.router.navigate(['/login']);
-
-      }
-
-    });
-
-  }
-
-}

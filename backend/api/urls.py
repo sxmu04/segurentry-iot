@@ -4,6 +4,7 @@ from django.http import JsonResponse
 
 from .firebase_test import test_connection
 
+from .views import UserListCreateView
 
 def firebase_status(request):
 
@@ -30,5 +31,5 @@ urlpatterns = [
         "firebase-status/",
         firebase_status
     )
-
+    path('users/', UserListCreateView.as_view()),
 ]

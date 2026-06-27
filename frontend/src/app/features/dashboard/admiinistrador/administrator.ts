@@ -25,9 +25,9 @@ interface Access {
     FormsModule
   ],
 
-  templateUrl: './admin.html',
+  templateUrl: './administrator.html',
 
-  styleUrls: ['./admin.css']
+  styleUrls: ['./administrator.css']
 })
 export class AdminComponent {
 

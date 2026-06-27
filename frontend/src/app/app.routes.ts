@@ -24,46 +24,19 @@ export const routes: Routes = [
   },
 
   {
-    path: 'home',
-    loadComponent: () =>
-      import('./features/dashboard/super-admin/super-admin.component')
-        .then(m => m.SuperAdminComponent),
-    canActivate: [authGuard]
-  },
-
-  {
     path: 'forgot-password',
     loadComponent: () =>
       import('./features/auth/pages/forgot-password/forgot-password.component')
         .then(m => m.ForgotPasswordComponent)
   },
 
+  // 🔥 DASHBOARD DIRECTO
   {
-    path: '**',
-    redirectTo: 'login'
-  },
-
-
-  // DASHBOARD
-
-  {
-    path: '',
+    path: 'dashboard/super-admin',
     canActivate: [authGuard],
-
     loadComponent: () =>
-      import('./layout/dashboard-layout/dashboard-layout')
-        .then(m => m.DashboardLayoutComponent),
-
-    children: [
-
-      {
-        path: 'home',
-        loadComponent: () =>
-          import('./features/dashboard/super-admin/super-admin.component')
-            .then(m => m.SuperAdminComponent)
-      }
-
-    ]
+      import('./features/dashboard/super-admin/super-admin.component')
+        .then(m => m.SuperAdminComponent)
   },
 
   {
